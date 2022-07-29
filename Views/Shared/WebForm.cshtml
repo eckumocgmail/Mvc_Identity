@@ -1,0 +1,28 @@
+﻿@using static WebFormBuilderService
+@model WebForm
+<form name="@Model.Name" 
+      action="@Model.URL" 
+      method="post"
+      onmouseover="this.classList.add('border-primary')"
+      onmouseleave="this.classList.remove('border-primary')"
+>
+    <div>
+        <h2>@Model.Title</h2>
+        <p>@Model.URL</p>        
+    </div>
+    @foreach( BaseElement element in Model.GetControls())
+    {
+        <div class="form-group">
+            <label for="exampleInputEmail1">
+                @element.Name
+            </label>
+            <input class="form-control"
+                   Name="@element.Name" 
+                   id="@element.Name"/>
+            <small id="emailHelp" class="form-text text-muted"></small>
+          </div>
+    }
+    <div style="margin: 5px;" align="right">
+        <button class="btn btn-primary btn-sm"> Выполнить </button>
+    </div>
+</form>
